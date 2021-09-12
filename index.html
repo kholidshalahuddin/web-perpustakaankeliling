@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+/* Fixed sidenav, full height */
+.sidenav {
+  height: 100%;
+  width: 20.5%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #FC5508;
+  overflow-x: hidden;
+  box-shadow: 0px 8px 13px 6px rgba(0,0,0,0.2);
+  
+}
+
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  color: #000000;
+  
+}
+
+/* Main content */
+.main {
+  margin-left: 25%; /* Same as the width of the sidenav */
+  font-size: 20px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+  text-align: center;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+
+/* Some media queries for responsiveness */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.dropbtn {
+  background-color: #FF4F00;
+  color: white;
+  padding: 16px;
+  width: 100%;
+  font-size: 16px;
+  text-align: left;
+  border: none;
+  cursor: pointer;
+  
+}
+
+.dropdown {
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  display: inline-block;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  width:100%;
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  background-color: #FFFFFF;
+  color: black;
+  padding: 16px;
+  width: 100%;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a:hover {
+	background-color: #FF4F00;
+	color: white;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+	text-decoration: none;
+	background: #FFFFFF;
+	padding: 10px;
+	color:#000000;
+	display: inline-block;
+	border: 8px solid #FF4F00;
+	transition: all 0.4s ease 0s;
+	
+}
+.dropbtn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+.dropbtn span:after {
+  font-family: "FontAwesome";
+  content: '\f103';
+  position: absolute;
+  opacity: 1;
+  top: 0;
+  right: -30%;
+  transition: 0.5s;
+}
+
+.dropbtn:hover span {
+  padding-right: 25%;
+}
+.sn{
+padding-right:8.5px;
+}
+.sl{
+padding-right:0.7px;
+}
+.rb{
+padding-right:11.1px;
+}
+.km{
+padding-right:4.5px;
+}
+.jm{
+padding-right:6px;
+}
+
+.dropbtn:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+.resp-container {
+    position: relative;
+    overflow: hidden;
+    padding-top: 56.25%;
+	height:200px;
+}
+.resp-iframe {
+    position: absolute;
+    top: 0;
+    left: 20%;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+div.banner{
+	padding-left: 20.8%;
+}
+.gmbr{
+  width: 100%;
+  height:30%;
+  opacity: 0.3;
+  filter: alpha(opacity=30);
+}
+</style>
+</head>
+<body>
+
+<div class="sidenav">
+	<div class="dropdown">
+  <a href="index.html"><button class="dropbtn"><i class="fa">&#xf015;&nbsp;</i>Home</button></a>
+  </div>
+  <div class="dropdown">
+  <button class="dropbtn"><span class="sn">Senin</span><i></i></button>
+  <div class="dropdown-content">
+  <a href="seninpillok.html">BUS 18</a>
+  <a href="seninpillok1.html">BUS 19</a>
+    <a href="seninpillok2.html">BUS PINK</a>
+    <a href="seninpillok3.html">BUS BIRU</a>
+  </div>
+  </div>
+  <div class="dropdown">
+  <button class="dropbtn"><span class="sl">Selasa</span></button>
+  <div class="dropdown-content">
+    <a href="selasapillok.html">BUS 18</a>
+    <a href="selasapillok1.html">BUS 19</a>
+    <a href="selasapillok2.html">BUS PINK</a>
+    <a href="selasapillok3.html">BUS BIRU</a>
+  </div>
+  </div>
+  <div class="dropdown">
+  <button class="dropbtn"><span class="rb">Rabu</span></button>
+  <div class="dropdown-content">
+    <a href="#">BUS 18</a>
+    <a href="#">BUS 19</a>
+    <a href="#">BUS PINK</a>
+    <a href="#">BUS BIRU</a>
+  </div>
+  </div>
+  <div class="dropdown">
+  <button class="dropbtn"><span class="km">Kamis </span></button>
+  <div class="dropdown-content">
+    <a href="#">BUS 18</a>
+    <a href="#">BUS 19</a>
+    <a href="#">BUS PINK</a>
+    <a href="#">BUS BIRU</a>
+  </div>
+  </div>
+  <div class="dropdown">
+  <button class="dropbtn"><span class="jm">Jumat </span></button>
+  <div class="dropdown-content">
+    <a href="#">BUS 18</a>
+    <a href="#">BUS 19</a>
+    <a href="#">BUS PINK</a>
+    <a href="#">BUS BIRU</a>
+  </div>
+  </div>
+</div>
+
+<div class="main">
+<p><img src="img/lg.png" width="80" height="100">
+<p><h2>WEB JADWAL PERPUSTAKAAN KELILING</h2>
+<p><h3>PERPUSTAKAAN DAERAH KOTA MAGELANG 2019</h3>
+</div>
+<div class="banner">
+<p><img class="gmbr" src="img/banner.jpeg">
+</div>
+
+<script>
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+  this.classList.toggle("active");
+  var dropdownContent = this.nextElementSibling;
+  if (dropdownContent.style.display === "block") {
+  dropdownContent.style.display = "none";
+  } else {
+  dropdownContent.style.display = "block";
+  }
+  });
+}
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+</body>
+</html> 

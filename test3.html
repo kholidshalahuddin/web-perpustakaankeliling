@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/ol3/3.5.0/ol.min.css" type="text/css">
+    <link rel="stylesheet" href="style.css">
+    
+  </head>
+  <style>
+  #map{
+    position:absolute;
+    z-index:1;
+    width:100%; height:100%;
+    top:0; bottom:0;
+}
+.ol-popup {
+    position: absolute;
+    background-color: white;
+    -webkit-filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+    filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #cccccc;
+    bottom: 12px;
+    left: -50px;
+}
+.ol-popup:after, .ol-popup:before {
+    top: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+.ol-popup:after {
+    border-top-color: white;
+    border-width: 10px;
+    left: 48px;
+    margin-left: -10px;
+}
+.ol-popup:before {
+    border-top-color: #cccccc;
+    border-width: 11px;
+    left: 48px;
+    margin-left: -11px;
+}
+.ol-popup-content {
+    position: relative;
+    min-width: 200px;
+    min-height: 150px;
+    height: 100%;
+    max-height: 250px;
+    padding:2px;
+    white-space: normal;        
+    background-color: #f7f7f9;
+    border: 1px solid #e1e1e8;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.ol-popup-content p{
+    font-size: 14px;
+    padding: 2px 4px;
+    color: #222;
+    margin-bottom: 15px;
+}
+.ol-popup-closer {
+    position: absolute;
+    top: -4px;
+    right: 2px;
+    font-size: 100%;
+    color: #0088cc;
+    text-decoration: none;
+}
+a.ol-popup-closer:hover{
+    color: #005580;
+    text-decoration: underline;
+}
+.ol-popup-closer:after {
+    content: "✖";
+}
+  </style>
+<script>
+var olview = new ol.View({
+    center: [-9120944.666442728, 2653259.4403269454],
+    resolution: 39135.75848201024,
+    minZoom: 2,
+    maxZoom: 20
+});
+
+var sourceFeatures = new ol.source.Vector(),
+    layerFeatures = new ol.layer.Vector({source: sourceFeatures});
+
+var map = new ol.Map({
+    target: document.getElementById('map'),
+    loadTilesWhileAnimating: true,
+    loadTilesWhileInteracting: true,
+    view: olview,
+    renderer: 'canvas',
+    layers: [
+      new ol.layer.Tile({
+        style: 'Aerial',
+        source: new ol.source.MapQuest({layer: 'sat'})
+      }),
+      layerFeatures
+    ]
+});
+
+var popup = new ol.Overlay.Popup;
+popup.setOffset([0, -55]);
+map.addOverlay(popup);
+
+var long_string = 'a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text a long text ';
+
+
+var style1 = [
+    new ol.style.Style({
+        image: new ol.style.Icon(({
+            scale: 0.7,
+            rotateWithView: false,
+            anchor: [0.5, 1],
+            anchorXUnits: 'fraction',
+            anchorYUnits: 'fraction',
+            opacity: 1,
+            src: '//raw.githubusercontent.com/jonataswalker/map-utils/master/images/marker.png'
+        })),
+        zIndex: 5
+    }),
+    new ol.style.Style({
+        image: new ol.style.Circle({
+            radius: 5,
+            fill: new ol.style.Fill({
+                color: 'rgba(255,255,255,1)'
+            }),
+            stroke: new ol.style.Stroke({
+                color: 'rgba(0,0,0,1)'
+            })
+        })
+    })
+];
+
+var feature = new ol.Feature({
+    type: 'click',
+    desc: long_string,
+    geometry: new ol.geom.Point([-9120944.666442728, 2653259.4403269454])
+});
+var feature2 = new ol.Feature({
+    type: 'click',
+    desc: long_string,
+    geometry: new ol.geom.Point([-8347855.579795895, -679521.3556101936])
+});
+feature.setStyle(style1);
+sourceFeatures.addFeature(feature);
+
+feature2.setStyle(style1);
+sourceFeatures.addFeature(feature2);
+
+map.on('click', function(evt) {
+    var f = map.forEachFeatureAtPixel(
+        evt.pixel,
+        function(ft, layer){return ft;}
+    );
+    if (f && f.get('type') == 'click') {
+        var geometry = f.getGeometry();
+        var coord = geometry.getCoordinates();
+        
+        var content = '<p>'+f.get('desc')+'</p>';
+        
+        popup.show(coord, content);
+        
+    } else { popup.hide(); }
+    
+});
+map.on('pointermove', function(e) {
+    if (e.dragging) { popup.hide(); return; }
+    
+    var pixel = map.getEventPixel(e.originalEvent);
+    var hit = map.hasFeatureAtPixel(pixel);
+    
+    map.getTarget().style.cursor = hit ? 'pointer' : '';
+});
+
+
+</script>
+  <body>
+    <div id="map" tabindex="0"></div>
+    
+    
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ol3/3.5.0/ol.min.js" type="text/javascript"></script>
+    <script src="ol-popup.js"></script>
+    <script src="script.js"></script>
+  </body>
+
+</html>

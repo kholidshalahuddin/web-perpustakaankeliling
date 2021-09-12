@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+<style>
+html, body, #basicMap {
+		  width: 90%;
+		  padding-left:13px;
+          margin: 0;
+      }
+table{
+	width:100%;
+	text-align:left;
+}
+th {
+	padding-left: 20px;
+	padding-right: 40px;
+	vertical-align: top;
+}
+.resp-container {
+    position: relative;
+    overflow: hidden;
+    padding-top: 56.25%;
+}
+.resp-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+</style>
+<link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
+    <style>
+      .map {
+        height: 300px;
+      }
+    </style>
+	<script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+    <script src="test/img">
+	</script>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+</head>
+<body>
+<h2>Alamat Lokasi</h2>
+<ul2>
+<li>Kec. Magelang Tengah ,Kota Magelang ,Jawa Tengah</li>
+</ul2>
+<h2>Jam Operasional</h2>
+<ul2>
+<li>08.30 WIB - 09.00 WIB</li>
+</ul2>
+<h2>Jumlah Buku</h2>
+<ul2>
+<li>500 Buah</li>
+</ul2>
+<H2>Peta Lokasi</h2>
+<div id="map" class="map"></div>
+<p>Buka Di <a href="https://www.google.com/maps/place/Kec.+Magelang+Tengah,+Kota+Magelang,+Jawa+Tengah/@-7.4770507,110.2036933,14z/data=!3m1!4b1!4m5!3m4!1s0x2e7a8f59ace723eb:0xf9c4a2cf58792c5e!8m2!3d-7.4797342!4d110.2176941?hl=id" target="_blank">Google Maps</a></p>
+<script type="text/javascript">
+	 var peta ={
+	 map: null,
+	 layerVector: null,
+	 
+	 main :function()
+	 {
+		this.setmarker();
+		 this.setmap();
+	 },
+	 setmap:function()
+	 {
+		  	this.map = new ol.Map({
+    		target: 'map',
+    		layers: [
+     	 	new ol.layer.Tile({
+        	source: new ol.source.OSM()
+      		}),
+			this.layerVector,
+    		],
+    		view: new ol.View({
+      		center: ol.proj.transform([110.2036933,-7.4770507],'EPSG:4326', 'EPSG:3857'),
+      		zoom: 16
+			})
+		});
+	},	 
+	setmarker:function()
+	{
+		var marker,styleMarker,sourceVector
+		marker=new ol.Feature({
+			geometry: new ol.geom.Point(ol.proj.transform([110.2036933,-7.4770507],'EPSG:4326', 'EPSG:3857')),
+			name : 'Lokasi Pusling',
+		});
+		styleMarker = new ol.style.Style({
+			image: new ol.style.Icon({
+				scale:.1,
+				src: 'img/1marker.png',
+			}),
+		});
+		sourceVector = new ol.source.Vector();
+		this.layerVector = new ol.layer.Vector({
+			source: sourceVector,
+		});
+		marker.setStyle(styleMarker);
+		sourceVector.addFeatures([marker]);
+	},
+ }
+ peta.main();
+    </script>
+
+</body>
+</html>

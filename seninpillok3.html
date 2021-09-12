@@ -1,0 +1,351 @@
+<!doctype html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body{
+  font-family:"Arial";
+  width:91%;
+}
+table{
+  border-collapse: collapse;
+  width: 90%;
+  font-family:"Arial";
+}
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:hover {background-color:#FC5508;}
+h1 {
+  background-color: #FC5508;
+  color:#FFFFFF;
+  padding-right:15%;
+  text-align:center;
+}
+ul li {
+  padding: 5px 0px;
+  list-style-type: square;
+}
+a {
+  text-decoration: none;
+  color:#000000;
+}
+/* visited link */
+a:visited {
+  color: black;
+}
+
+/* mouse over link */
+a:hover {
+  color: #ffffff;
+}
+/* selected link */
+a:active {
+  color: #FC5508;
+}
+.resp-container {
+    position: relative;
+    overflow: hidden;
+    padding-top: 56.25%;
+}
+.resp-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 90%;
+    height: 100%;
+    border: 0;
+}
+.judul{
+ text-align:center;
+}
+</style>
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+/* Fixed sidenav, full height */
+.sidenav {
+  height: 100%;
+  width: 20.5%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #FC5508;
+  overflow-x: hidden;
+  box-shadow: 0px 8px 13px 6px rgba(0,0,0,0.2);
+  
+}
+
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  color: #000000;
+  
+}
+
+/* Main content */
+.main {
+  margin-left: 200px; /* Same as the width of the sidenav */
+  font-size: 20px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+
+/* Some media queries for responsiveness */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.dropbtn {
+  background-color: #FF4F00;
+  color: white;
+  padding: 16px;
+  width: 100%;
+  font-size: 16px;
+  text-align: left;
+  border: none;
+  cursor: pointer;
+  
+}
+
+.dropdown {
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  display: inline-block;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  width:100%;
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  background-color: #FFFFFF;
+  color: black;
+  padding: 16px;
+  width: 100%;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a:hover {
+  background-color: #FF4F00;
+  color: white;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  text-decoration: none;
+  background: #FFFFFF;
+  padding: 10px;
+  color:#000000;
+  display: inline-block;
+  border: 8px solid #FF4F00;
+  transition: all 0.4s ease 0s;
+  
+}
+.dropbtn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+.dropbtn span:after {
+  font-family: "FontAwesome";
+  content: '\f103';
+  position: absolute;
+  opacity: 1;
+  top: 0;
+  right: -30%;
+  transition: 0.5s;
+}
+
+.dropbtn:hover span {
+  padding-right: 25%;
+}
+.hm{
+padding-right:8px;
+}
+.sn{
+padding-right:8.5px;
+}
+.sl{
+padding-right:0.7px;
+}
+.rb{
+padding-right:11.1px;
+}
+.km{
+padding-right:4.5px;
+}
+.jm{
+padding-right:6px;
+}
+
+.dropbtn:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+.resp-container {
+    position: relative;
+    overflow: hidden;
+  padding-left:109%;
+    padding-top: 56.25%;
+  height:200px;
+}
+.resp-iframe {
+    position: absolute;
+    top: 0;
+    left: 22.5%;
+    height: 100%;
+    border: 0;
+}
+.badan{
+  padding-left:30%;
+}
+</style>
+<script type="text/javascript">
+function iframeChange() {
+    var buttons = document.querySelector(".link"),
+    buttons2 = document.querySelector(".link2"),
+        iframe = document.getElementById('frame');
+
+    buttons.addEventListener("click", function (e) {
+        iframe.src = e.target.dataset.src;
+        iframe.width = e.target.dataset.width;
+        iframe.height = e.target.dataset.height;
+    });
+    buttons2.addEventListener("click", function (e) {
+        iframe.src = e.target.dataset.src2;
+        iframe.width = e.target.dataset.width;
+        iframe.height = e.target.dataset.height;
+    });
+   
+}
+window.onload = iframeChange;
+</script>
+
+<meta charset="utf-8">
+<title>BUS 18</title>
+</head>
+<body>
+
+<div class="sidenav">
+  <div class="dropdown">
+  <a href="index.html"><button class="dropbtn"><i class="fa">&#xf015;&nbsp;</i>Home</button></a>
+  </div>
+  <div class="dropdown">
+  <button class="dropbtn"><span class="sn">Senin</span><i></i></button>
+  <div class="dropdown-content">
+  <a href="seninpillok.html">BUS 18</a>
+  <a href="seninpillok1.html">BUS 19</a>
+  <a href="seninpillok2.html">BUS PINK</a>
+  <a href="seninpillok3.html">BUS BIRU</a>
+  </div>
+  </div>
+  <div class="dropdown">
+  <button class="dropbtn"><span class="sl">Selasa</span></button>
+  <div class="dropdown-content">
+    <a href="#">BUS 18</a>
+    <a href="#">BUS 19</a>
+    <a href="#">BUS PINK</a>
+    <a href="#">BUS BIRU</a>
+  </div>
+  </div>
+  <div class="dropdown">
+  <button class="dropbtn"><span class="rb">Rabu</span></button>
+  <div class="dropdown-content">
+    <a href="#">BUS 18</a>
+    <a href="#">BUS 19</a>
+    <a href="#">BUS PINK</a>
+    <a href="#">BUS BIRU</a>
+  </div>
+  </div>
+  <div class="dropdown">
+  <button class="dropbtn"><span class="km">Kamis </span></button>
+  <div class="dropdown-content">
+    <a href="#">BUS 18</a>
+    <a href="#">BUS 19</a>
+    <a href="#">BUS PINK</a>
+    <a href="#">BUS BIRU</a>
+  </div>
+  </div>
+  <div class="dropdown">
+  <button class="dropbtn"><span class="jm">Jumat </span></button>
+  <div class="dropdown-content">
+    <a href="#">BUS 18</a>
+    <a href="#">BUS 19</a>
+    <a href="#">BUS PINK</a>
+    <a href="#">BUS BIRU</a>
+  </div>
+  </div>
+</div>
+<div class="badan">
+<h1><marquee>Daftar Lokasi<i class="fa" style="color:white;">&nbsp;&#xf041;</i></marquee></h1>
+
+<table align="center" >
+<tr>
+<th>
+<a class="link" href="#" id="b1" data-src="BUSBIRUGELANGAN5.html" width="500" height="400"><i class="fa" style="color:red;">&#xf002;&nbsp;</i> SD NEGERI GELANGAN 5</a>
+</th>
+</tr>
+<tr>
+<th>
+<a class="link2" href="#" id="b2" data-src2="BUSBIRUAKPER.html" width="500" height="400"><i class="fa" style="color:red;">&#xf002;&nbsp;</i> Akper Karya Bhakti Nusantara</a>
+</th>
+</tr>
+</table>
+</div>
+<div class="resp-container">
+<div class="loadiframe">
+<iframe class="resp-iframe" id='frame' frameborder="0" width="300" height="400">
+</div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</body>
+</html>
